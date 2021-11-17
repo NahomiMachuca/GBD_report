@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="62f9b2a7-088e-4741-a9b4-330bfb3f91f2">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[Select
+area_departamento,total_empleado from area_departamento]]>
+	</queryString>
+	<field name="area_departamento" class="java.lang.String"/>
+	<field name="total_empleado" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="70" y="12" width="377" height="56" uuid="d1c821b2-9bc3-4588-b7af-d38107a4231f"/>
+				<textElement textAlignment="Justified">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Un reporte en ireport que muestre en un diagrama de barras el número de empleados que ha existido por cada departamento.]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="38" splitType="Stretch">
+			<staticText>
+				<reportElement x="347" y="12" width="120" height="20" uuid="d1e17719-0282-44ca-90e9-1d43f12e15a5"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total de empleados]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="46" y="12" width="166" height="26" uuid="2bb52482-66e1-4cb0-8663-203ab077a64d"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre del departamenmto]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="33" splitType="Stretch">
+			<textField>
+				<reportElement x="347" y="13" width="100" height="20" uuid="071b3fc7-f55f-4e54-a151-5b2d5195880f"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{total_empleado}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="70" y="13" width="121" height="20" uuid="6faa4c20-8e67-4e5e-acd0-2946deb19ae2"/>
+				<textFieldExpression><![CDATA[$F{area_departamento}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="1" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="225" splitType="Stretch">
+			<bar3DChart>
+				<chart>
+					<reportElement x="101" y="10" width="298" height="202" uuid="8927e6aa-75ac-4d43-93e6-c39abcf2af5e"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<categoryDataset>
+					<categorySeries>
+						<seriesExpression><![CDATA[$F{area_departamento}]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{area_departamento}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{total_empleado}]]></valueExpression>
+					</categorySeries>
+				</categoryDataset>
+				<bar3DPlot>
+					<plot/>
+					<itemLabel/>
+					<categoryAxisFormat>
+						<axisFormat/>
+					</categoryAxisFormat>
+					<valueAxisFormat>
+						<axisFormat/>
+					</valueAxisFormat>
+				</bar3DPlot>
+			</bar3DChart>
+		</band>
+	</summary>
+</jasperReport>
